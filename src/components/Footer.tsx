@@ -48,6 +48,13 @@ export function Footer() {
                 <Icon name="mail" className="size-4 shrink-0" /> {site.email}
               </a>
             </li>
+            {site.social.map((s) => (
+              <li key={s.url}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer me" className="flex items-center gap-2 hover:text-fg">
+                  <Icon name="globe" className="size-4" /> {s.label}
+                </a>
+              </li>
+            ))}
             <li>
               <a href={site.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-fg">
                 <Icon name="github" className="size-4" /> GitHub

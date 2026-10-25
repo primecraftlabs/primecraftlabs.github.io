@@ -22,8 +22,9 @@ export const projects: Project[] = [
     slug: "restaurant-website",
     title: "Restaurant website",
     category: "Demo · Local business",
-    status: "in-progress",
+    status: "live",
     image: "/work/restaurant-website.png",
+    liveUrl: site.urls.demoRestaurant,
     summary: "Menu, photos, location and one-tap WhatsApp ordering for a local restaurant or café.",
     problem:
       "Most local restaurants rely on delivery apps and phone calls. Customers can't see the full menu, prices or photos, and the restaurant pays commission on every order.",
@@ -42,8 +43,9 @@ export const projects: Project[] = [
     slug: "clinic-booking",
     title: "Clinic with online booking",
     category: "Demo · Local business",
-    status: "in-progress",
+    status: "live",
     image: "/work/clinic-booking.png",
+    liveUrl: site.urls.demoClinic,
     summary: "Doctor profiles, services and an appointment system where patients choose their own time slot.",
     problem:
       "Clinics lose patients when the phone is busy, and the front desk spends hours managing appointments by hand.",

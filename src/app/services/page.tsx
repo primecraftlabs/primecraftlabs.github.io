@@ -6,16 +6,34 @@ import { ServiceVisual } from "@/components/ServiceVisual";
 import { ButtonLink, CheckList, Chips, Container, PageHeader, WhatsAppButton } from "@/components/ui";
 import { services } from "@/data/services";
 import { enquiryMessage, inCity, priceLabel, site } from "@/data/site";
+import { jsonLd, organizationId, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    `Business websites, online booking, Android + iOS apps, web apps, backends, real-time features and automation, built by ${site.name}${inCity}.`,
+export const metadata: Metadata = pageMetadata({
+  path: "/services/",
+  title: "Website, App & Online Booking Services",
+  description: `Business websites, online booking, Android + iOS apps, web apps, backends, real-time features and automation, built by ${site.name}${inCity}.`,
+});
+
+const servicesData = {
+  "@type": "ItemList",
+  itemListElement: services.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.title,
+      description: s.short,
+      url: `${site.url}/services/#${s.id}`,
+      provider: { "@id": organizationId },
+      areaServed: site.country,
+    },
+  })),
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(servicesData)} />
       <PageHeader
         eyebrow="Services"
         title="Everything your business needs online, built properly"

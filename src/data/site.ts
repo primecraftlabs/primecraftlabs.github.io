@@ -29,6 +29,14 @@ export const site = {
   colors: brand.theme.colors,
   // Free form at https://formspree.io: put the form ID in jk/brand/brand.json. Empty = email fallback.
   formspreeId: brand.formspreeId,
+  // Google Search Console "HTML tag" code (content="..." part). Empty = no tag.
+  googleSiteVerification: brand.seo.googleSiteVerification,
+  // Cloudflare Web Analytics token (free, cookie-free visitor counter). Empty = no analytics script.
+  cloudflareAnalyticsToken: brand.analytics.cloudflareToken,
+  // Social profile URLs from brand.json; empty ones are skipped everywhere (footer, structured data).
+  social: Object.entries(brand.social)
+    .filter(([, url]) => url)
+    .map(([network, url]) => ({ label: network[0].toUpperCase() + network.slice(1), url: url as string })),
 };
 
 export const nav = [

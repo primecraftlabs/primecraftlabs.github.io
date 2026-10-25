@@ -4,11 +4,13 @@ import { Reveal } from "@/components/Reveal";
 import { PageHeader, Section } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Work",
-  description: `Demo projects and tools by ${site.name}: a restaurant website, a clinic booking system and an AI lead finder.`,
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/work/",
+  title: "Our Work: Business Websites, Booking Systems & Apps",
+  description: `Demo projects and tools by ${site.name}: a restaurant website with WhatsApp ordering, a clinic booking system and an AI lead finder.`,
+});
 
 export default function WorkPage() {
   return (

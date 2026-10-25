@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
 import { CtaBand, Faq } from "@/components/blocks";
 import { ButtonLink, CheckList, Container, PageHeader, Section, SectionHeading } from "@/components/ui";
-import { packages } from "@/data/pricing";
+import { faqs, packages } from "@/data/pricing";
 import { enquiryMessage, priceLabel, quoteLabel, site, whatsappLink } from "@/data/site";
+import { jsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: site.showPrices ? "Pricing" : "Packages",
+export const metadata: Metadata = pageMetadata({
+  path: "/pricing/",
+  title: site.showPrices ? "Website & App Development Pricing" : "Website & App Packages: Free Quote",
   description: site.showPrices
     ? packages.map((p) => `${p.name}: ${priceLabel(p.price, p.prefix)}`).join(". ") + "."
     : `Website, booking and app packages from ${site.name}. Every project gets a free quote and a fixed price before work starts.`,
+});
+
+const faqData = {
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 
 export default function PricingPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqData)} />
       <PageHeader
         eyebrow={site.showPrices ? "Pricing" : "Packages"}
         title={site.showPrices ? "Simple, honest pricing" : "Packages that fit your business"}

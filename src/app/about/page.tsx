@@ -3,12 +3,13 @@ import { CtaBand } from "@/components/blocks";
 import { Reveal } from "@/components/Reveal";
 import { CheckList, Chips, PageHeader, Section, SectionHeading } from "@/components/ui";
 import { cityBased, site } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    `${site.name} is a ${cityBased}studio building websites, mobile apps and backends, founded by software engineer ${site.owner}.`,
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/about/",
+  title: "About Us: Website & App Development Studio",
+  description: `${site.name} is a ${cityBased}studio building websites, mobile apps and backends, founded by software engineer ${site.owner}.`,
+});
 
 const highlights = [
   "Moved backend services to an event-driven architecture for reliability",

@@ -75,7 +75,7 @@ function BookingVisual() {
           {days.map((d, i) => (
             <span
               key={d}
-              className={`rounded py-1 text-center text-[9px] font-semibold ${i === 2 ? "bg-navy-800 text-white" : "bg-white text-navy-900/60"}`}
+              className={`rounded py-1 text-center text-[9px] font-semibold ${i === 2 ? "bg-navy-800 text-white" : "bg-white text-navy-900/80"}`}
             >
               {d}
             </span>
@@ -89,8 +89,8 @@ function BookingVisual() {
                 i === 5
                   ? "anim-pop border-gold-500 bg-gold-500 text-navy-900"
                   : i === 1 || i === 6
-                    ? "border-transparent bg-navy-900/5 text-navy-900/30 line-through"
-                    : "border-navy-900/15 bg-white text-navy-900/70"
+                    ? "border-transparent bg-navy-900/10 text-navy-900/75 line-through"
+                    : "border-navy-900/15 bg-white text-navy-900/85"
               }`}
             >
               {s}
@@ -224,7 +224,7 @@ function DashboardVisual() {
         <div className="mb-2 grid grid-cols-3 gap-1.5">
           {["Sales", "Orders", "Visitors"].map((k, i) => (
             <div key={k} className="rounded bg-white p-1.5 shadow-sm">
-              <div className="text-[8px] font-semibold text-navy-900/50">{k}</div>
+              <div className="text-[8px] font-semibold text-navy-900/75">{k}</div>
               <div className={`text-[11px] font-extrabold ${i === 0 ? "text-gold-700" : "text-navy-900"}`}>
                 {["+24%", "312", "4.1k"][i]}
               </div>

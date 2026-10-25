@@ -5,6 +5,8 @@ import { CtaBand, ProjectCover, StatusBadge } from "@/components/blocks";
 import { Icon } from "@/components/Icons";
 import { ButtonLink, CheckList, Chips, Container } from "@/components/ui";
 import { getProject, projects } from "@/data/projects";
+import { site } from "@/data/site";
+import { jsonLd, organizationId, pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  return pageMetadata({ path: `/work/${project.slug}/`, title: `${project.title}: Case Study`, description: project.summary });
 }
 
 export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
@@ -24,8 +26,31 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   const project = getProject(slug);
   if (!project) notFound();
 
+  const structuredData = {
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+          { "@type": "ListItem", position: 2, name: "Work", item: `${site.url}/work/` },
+          { "@type": "ListItem", position: 3, name: project.title, item: `${site.url}/work/${project.slug}/` },
+        ],
+      },
+      {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.summary,
+        url: `${site.url}/work/${project.slug}/`,
+        creator: { "@id": organizationId },
+        ...(project.image ? { image: `${site.url}${project.image}` } : {}),
+        keywords: project.tech.join(", "),
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />
       <section className="border-b border-line">
         <Container className="py-12 sm:py-16">
           <Link href="/work/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-fg">

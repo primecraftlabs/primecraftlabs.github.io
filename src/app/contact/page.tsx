@@ -3,11 +3,13 @@ import { ContactForm } from "@/components/ContactForm";
 import { Icon, type IconName } from "@/components/Icons";
 import { PageHeader, Section } from "@/components/ui";
 import { site, whatsappLink } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  path: "/contact/",
+  title: "Contact Us: Get a Free Website Sample",
   description: `Get a free sample design for your business website. Message ${site.name} on WhatsApp${site.showPhone ? ", email or phone" : " or email"}.`,
-};
+});
 
 type Method = { icon: IconName; title: string; value: string; href: string; external?: boolean };
 const methods: Method[] = [

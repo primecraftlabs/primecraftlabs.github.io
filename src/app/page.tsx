@@ -6,6 +6,9 @@ import { ButtonLink, CheckList, Chips, Container, Glow, Section, SectionHeading,
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
 import { inCity, site } from "@/data/site";
+import { homeDescription, homeTitle, pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({ path: "/", title: homeTitle, description: homeDescription, absolute: true });
 
 const audiences = [
   {
