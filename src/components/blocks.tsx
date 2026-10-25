@@ -1,27 +1,53 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import type { Service } from "@/data/services";
 import { faqs } from "@/data/pricing";
+import { priceLabel } from "@/data/site";
 import { Icon } from "./Icons";
-import { ButtonLink, Container, Glow, IconBadge, WhatsAppButton } from "./ui";
+import { ServiceVisual } from "./ServiceVisual";
+import { ButtonLink, Container, Glow, WhatsAppButton } from "./ui";
 
 export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/services/#${service.id}`}
-      className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-7 shadow-sm transition hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm transition hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg"
     >
-      <IconBadge>
-        <Icon name={service.icon} className="size-6" />
-      </IconBadge>
-      <h3 className="text-lg font-semibold">{service.title}</h3>
-      <p className="mt-2 flex-1 text-muted">{service.short}</p>
-      <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-brand">
-        {service.price}
-        <Icon name="arrow" className="size-4 transition group-hover:translate-x-1" />
-      </p>
+      <ServiceVisual id={service.id} className="p-3 pb-0 transition duration-500 group-hover:scale-[1.02]" />
+      <div className="flex flex-1 flex-col p-6 pt-5">
+        <div className="mb-2 flex items-center gap-2.5">
+          <span className="grid size-8 place-items-center rounded-lg bg-brand-soft text-brand">
+            <Icon name={service.icon} className="size-4" />
+          </span>
+          <h3 className="text-lg font-semibold">{service.title}</h3>
+        </div>
+        <p className="flex-1 text-muted">{service.short}</p>
+        <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-brand">
+          {priceLabel(service.price)}
+          <Icon name="arrow" className="size-4 transition group-hover:translate-x-1" />
+        </p>
+      </div>
     </Link>
   );
+}
+
+/** Project image: a real screenshot when there is one, otherwise the matching animated illustration. */
+export function ProjectCover({ project, className = "", preload = false }: { project: Project; className?: string; preload?: boolean }) {
+  if (project.image) {
+    return (
+      <Image
+        src={project.image}
+        alt={`Screenshot of the ${project.title.toLowerCase()} project`}
+        width={1280}
+        height={800}
+        unoptimized
+        preload={preload}
+        className={`aspect-[16/10] w-full object-cover object-top ${className}`}
+      />
+    );
+  }
+  return <ServiceVisual id={project.visual ?? ""} className={`overflow-hidden ${className}`} />;
 }
 
 export function StatusBadge({ status }: { status: Project["status"] }) {
@@ -40,10 +66,8 @@ export function ProjectCard({ project }: { project: Project }) {
       href={`/work/${project.slug}/`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className={`grid aspect-[16/9] place-items-center bg-linear-to-br ${project.gradient}`}>
-        <span className="text-6xl transition group-hover:scale-110" aria-hidden="true">
-          {project.emoji}
-        </span>
+      <div className="overflow-hidden border-b border-line">
+        <ProjectCover project={project} className="transition duration-500 group-hover:scale-[1.03]" />
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex items-center gap-2">

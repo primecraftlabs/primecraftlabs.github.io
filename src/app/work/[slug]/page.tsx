@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CtaBand, StatusBadge } from "@/components/blocks";
+import { CtaBand, ProjectCover, StatusBadge } from "@/components/blocks";
 import { Icon } from "@/components/Icons";
 import { ButtonLink, CheckList, Chips, Container } from "@/components/ui";
 import { getProject, projects } from "@/data/projects";
@@ -56,15 +56,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 )}
               </div>
             </div>
-            <div
-              className={`grid aspect-[16/10] place-items-center rounded-3xl bg-linear-to-br ${project.gradient} shadow-xl`}
-              role="img"
-              aria-label={`${project.title} illustration`}
-            >
-              <span className="text-8xl" aria-hidden="true">
-                {project.emoji}
-              </span>
-            </div>
+            <ProjectCover project={project} className="rounded-3xl border border-line shadow-xl" preload />
+
           </div>
         </Container>
       </section>

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { CtaBand } from "@/components/blocks";
 import { Reveal } from "@/components/Reveal";
 import { CheckList, Chips, PageHeader, Section, SectionHeading } from "@/components/ui";
-import { site } from "@/data/site";
+import { cityBased, site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    `${site.name} is a ${site.city}-based studio building websites, mobile apps and backends, founded by software engineer ${site.owner}.`,
+    `${site.name} is a ${cityBased}studio building websites, mobile apps and backends, founded by software engineer ${site.owner}.`,
 };
 
 const highlights = [
@@ -38,7 +38,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="Professional engineering for growing businesses"
-        lead={`${site.name} is a ${site.city}-based studio building websites, mobile apps and backends with the same quality used in production apps.`}
+        lead={`${site.name} is a ${cityBased}studio building websites, mobile apps and backends with the same quality used in production apps.`}
       />
 
       <Section>
@@ -46,8 +46,9 @@ export default function AboutPage() {
           <div className="space-y-5 text-lg text-muted">
             <p className="text-2xl font-bold text-fg">We build software that helps businesses grow.</p>
             <p>
-              {site.name} is a {site.city}-based studio for websites, mobile apps and backends. We work with local
-              businesses that want more customers online, and with startups that need a reliable app or backend.
+              {site.name} is a {cityBased}studio for websites, mobile apps and backends. We work with local
+              businesses that want more customers online, and with startups that need a reliable app or backend,
+              wherever they are.
             </p>
             <p>
               The studio was founded by {site.owner}, a software engineer and team lead with a B.Tech in Information

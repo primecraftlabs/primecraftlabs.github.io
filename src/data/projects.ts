@@ -5,8 +5,9 @@ export type Project = {
   title: string;
   category: string;
   status: "live" | "in-progress";
-  emoji: string;
-  gradient: string;
+  /** Cover: a screenshot in public/ (made with jk/tools/capture.py) or, if none, a ServiceVisual id. */
+  image?: string;
+  visual?: string;
   summary: string;
   problem: string;
   solution: string;
@@ -22,8 +23,7 @@ export const projects: Project[] = [
     title: "Restaurant website",
     category: "Demo · Local business",
     status: "in-progress",
-    emoji: "🍽️",
-    gradient: "from-amber-200 to-orange-500",
+    image: "/work/restaurant-website.png",
     summary: "Menu, photos, location and one-tap WhatsApp ordering for a local restaurant or café.",
     problem:
       "Most local restaurants rely on delivery apps and phone calls. Customers can't see the full menu, prices or photos, and the restaurant pays commission on every order.",
@@ -43,8 +43,7 @@ export const projects: Project[] = [
     title: "Clinic with online booking",
     category: "Demo · Local business",
     status: "in-progress",
-    emoji: "🩺",
-    gradient: "from-cyan-200 to-sky-500",
+    image: "/work/clinic-booking.png",
     summary: "Doctor profiles, services and an appointment system where patients choose their own time slot.",
     problem:
       "Clinics lose patients when the phone is busy, and the front desk spends hours managing appointments by hand.",
@@ -64,8 +63,7 @@ export const projects: Project[] = [
     title: "AI lead finder",
     category: "AI tool",
     status: "live",
-    emoji: "🤖",
-    gradient: "from-violet-300 to-indigo-500",
+    visual: "automation",
     summary: "An AI agent that finds local businesses, checks their websites for problems and drafts personal messages for review.",
     problem:
       "Finding the right businesses to contact takes hours: searching maps, checking each website, and writing a personal message for every one.",

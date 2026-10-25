@@ -5,12 +5,12 @@ import { Reveal } from "@/components/Reveal";
 import { ButtonLink, CheckList, Chips, Container, Glow, Section, SectionHeading, WhatsAppButton } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
-import { site } from "@/data/site";
+import { inCity, site } from "@/data/site";
 
 const audiences = [
   {
     title: "Local businesses",
-    text: `Clinics, salons, gyms, restaurants and shops in ${site.city} that want more customers from Google and WhatsApp.`,
+    text: `Clinics, salons, gyms, restaurants and shops${inCity} that want more customers from Google and WhatsApp.`,
     points: ["Professional website in your budget", "Online booking and WhatsApp ordering", "Free sample before you pay"],
     href: "/services/#websites",
     cta: "Websites & booking",
@@ -34,7 +34,7 @@ export default function Home() {
         <Container className="relative grid items-center gap-16 pt-14 pb-24 sm:pt-24 lg:grid-cols-2 lg:pb-32">
           <div>
             <p className="mb-5 inline-block rounded-full bg-accent-soft px-3 py-1 text-sm font-semibold text-accent-text">
-              Websites · Apps · Backends · {site.city}
+              Websites · Apps · Backends{site.showCity ? ` · ${site.city}` : ""}
             </p>
             <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-6xl">
               Websites and apps that bring your business <span className="text-accent-display">more customers</span>.

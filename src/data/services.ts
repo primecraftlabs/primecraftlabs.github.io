@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/Icons";
+import { amount } from "./site";
 
 export type Service = {
   id: string;
@@ -25,7 +26,7 @@ export const services: Service[] = [
       "Help with your domain and hosting",
     ],
     tech: ["Next.js", "HTML/CSS", "SEO basics"],
-    price: "from ₹8,000",
+    price: `from ${amount("website")}`,
   },
   {
     id: "booking",
@@ -40,7 +41,7 @@ export const services: Service[] = [
       "One month of free fixes after launch",
     ],
     tech: ["Next.js", "Firebase", "WhatsApp"],
-    price: "from ₹15,000",
+    price: `from ${amount("booking")}`,
   },
   {
     id: "mobile-apps",

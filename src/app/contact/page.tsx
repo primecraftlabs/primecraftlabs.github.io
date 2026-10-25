@@ -51,8 +51,10 @@ export default function ContactPage() {
                 <Icon name="pin" className="size-6" />
               </span>
               <span>
-                <span className="block font-bold">Based in {site.city}</span>
-                <span className="block text-sm text-muted">Meet in person or work online</span>
+                <span className="block font-bold">{site.showCity ? `Based in ${site.city}` : "Work with us from anywhere"}</span>
+                <span className="block text-sm text-muted">
+                  {site.showCity ? "Meet in person or work online" : "Everything happens online over WhatsApp and video calls"}
+                </span>
               </span>
             </div>
           </aside>

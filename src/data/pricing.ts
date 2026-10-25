@@ -1,9 +1,9 @@
-import { site } from "./site";
+import { amount, site } from "./site";
 
 export const packages = [
   {
     name: "Business website",
-    price: "₹8,000",
+    price: amount("website"),
     prefix: "from",
     description: "Everything a local business needs to look professional online.",
     features: [
@@ -17,7 +17,7 @@ export const packages = [
   },
   {
     name: "Website + online booking",
-    price: "₹15,000",
+    price: amount("booking"),
     prefix: "from",
     description: "Let customers book or order on their own, any time.",
     features: [
@@ -51,7 +51,7 @@ export const faqs = [
   },
   {
     q: "How do payments work?",
-    a: "50% to start and 50% when you're happy with the result. Bigger projects are split into milestones, and the price is fixed before work starts.",
+    a: "After a free chat we agree a fixed price for your project. You pay 50% to start and 50% when you're happy with the result. Bigger projects are split into milestones.",
   },
   {
     q: "How long does it take?",
@@ -66,7 +66,7 @@ export const faqs = [
     a: "You get one month of free fixes. After that, changes and updates are quick and priced clearly in advance.",
   },
   {
-    q: `Do you only work with businesses in ${site.city}?`,
-    a: `We're based in ${site.city} and happy to meet local clients, but everything can also be done online over WhatsApp and video calls.`,
+    q: "Can we work together if we're in a different city?",
+    a: "Yes. Everything can be done online over WhatsApp and video calls: the free chat, the sample design, progress updates and launch.",
   },
 ];

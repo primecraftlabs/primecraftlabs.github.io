@@ -11,7 +11,10 @@ export function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo />
           <p className="mt-4 max-w-sm text-muted">{site.tagline}</p>
-          <p className="mt-2 text-sm text-muted">Founded by {site.owner} · {site.city}, {site.country}</p>
+          <p className="mt-2 text-sm text-muted">
+            Founded by {site.owner}
+            {site.showCity ? ` · ${site.city}, ${site.country}` : ""}
+          </p>
         </div>
         <div>
           <h2 className="mb-4 text-sm font-semibold tracking-wide uppercase">Pages</h2>
@@ -55,7 +58,7 @@ export function Footer() {
       </Container>
       <div className="border-t border-line">
         <Container className="py-6 text-sm text-muted">
-          © {new Date().getFullYear()} {site.name}. Websites, apps &amp; backends from {site.city}.
+          © {new Date().getFullYear()} {site.name}. Websites, apps &amp; backends{site.showCity ? ` from ${site.city}` : ""}.
         </Container>
       </div>
     </footer>

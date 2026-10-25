@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { site } from "@/data/site";
+import { inCity, site } from "@/data/site";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -18,10 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Websites, Mobile Apps & Backends in ${site.city}`,
+    default: `${site.name} | Websites, Mobile Apps & Backends${inCity}`,
     template: `%s | ${site.name}`,
   },
-  description: `${site.name} builds websites with online booking, Android + iOS apps and cloud backends for businesses and startups in ${site.city}. Free sample design before you pay.`,
+  description: `${site.name} builds websites with online booking, Android + iOS apps and cloud backends for businesses and startups${inCity}. Free sample design before you pay.`,
   icons: { icon: { url: "/favicon.svg", type: "image/svg+xml" } },
   openGraph: {
     type: "website",
@@ -42,7 +42,9 @@ const structuredData = {
   ...(site.showPhone ? { telephone: site.phone } : {}),
   founder: { "@type": "Person", name: site.owner },
   areaServed: site.country,
-  address: { "@type": "PostalAddress", addressLocality: site.city, addressCountry: site.countryCode },
+  address: site.showCity
+    ? { "@type": "PostalAddress", addressLocality: site.city, addressCountry: site.countryCode }
+    : { "@type": "PostalAddress", addressCountry: site.countryCode },
   description: site.tagline,
 };
 

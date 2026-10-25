@@ -12,6 +12,10 @@ export const site = {
   city: brand.location.city,
   country: brand.location.country,
   countryCode: brand.location.countryCode,
+  // false = the city is not used in visible marketing text (we work with clients anywhere).
+  showCity: brand.location.showOnSite,
+  // false = no amounts on the site; every service/package shows a "free quote" call to action instead.
+  showPrices: brand.pricing.showPrices,
   tagline: brand.tagline,
   email: brand.contact.email,
   phone: brand.contact.phone,
@@ -31,8 +35,24 @@ export const nav = [
   { href: "/services/", label: "Services" },
   { href: "/work/", label: "Work" },
   { href: "/about/", label: "About" },
-  { href: "/pricing/", label: "Pricing" },
+  { href: "/pricing/", label: site.showPrices ? "Pricing" : "Packages" },
 ];
+
+/** A price amount from brand.json pricing.amounts (e.g. amount("website")). Sync leaves amounts out while
+ *  prices are hidden, so they never reach this public repo. */
+export function amount(key: string) {
+  return (brand.pricing.amounts as Record<string, string | undefined>)[key] ?? "";
+}
+
+/** Text shown where a price would be. Amounts appear only when prices are switched on in brand.json. */
+export const quoteLabel = "Get a free quote";
+export function priceLabel(price: string, prefix = "") {
+  return site.showPrices ? `${prefix ? `${prefix} ` : ""}${price}` : quoteLabel;
+}
+
+/** " in Delhi" / "Delhi-based " style fragments that disappear when the city is hidden. */
+export const inCity = site.showCity ? ` in ${site.city}` : "";
+export const cityBased = site.showCity ? `${site.city}-based ` : "";
 
 /** Pre-filled WhatsApp message; pass a topic (service or package name) for a specific enquiry. */
 export function enquiryMessage(topic?: string) {

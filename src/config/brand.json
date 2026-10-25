@@ -13,7 +13,12 @@
   "location": {
     "city": "Delhi",
     "country": "India",
-    "countryCode": "IN"
+    "countryCode": "IN",
+    "showOnSite": false
+  },
+  "pricing": {
+    "showPrices": false,
+    "amounts": {}
   },
   "tagline": "Websites, mobile apps and backends that bring your business more customers.",
   "headline": {

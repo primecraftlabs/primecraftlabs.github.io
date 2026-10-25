@@ -28,7 +28,7 @@ export function HeroVisual() {
         </div>
       </div>
 
-      <div className="absolute -right-4 -bottom-10 w-44 rounded-[1.6rem] border-4 border-fg/80 bg-surface p-3 shadow-2xl sm:-right-8">
+      <div className="anim-float absolute -right-4 -bottom-10 w-44 rounded-[1.6rem] border-4 border-fg/80 bg-surface p-3 shadow-2xl sm:-right-8">
         <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-line" />
         <p className="text-[11px] font-semibold">Book an appointment</p>
         <p className="mb-2 text-[10px] text-muted">Tomorrow</p>

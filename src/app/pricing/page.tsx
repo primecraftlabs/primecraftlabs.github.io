@@ -2,20 +2,26 @@ import type { Metadata } from "next";
 import { CtaBand, Faq } from "@/components/blocks";
 import { ButtonLink, CheckList, Container, PageHeader, Section, SectionHeading } from "@/components/ui";
 import { packages } from "@/data/pricing";
-import { enquiryMessage, whatsappLink } from "@/data/site";
+import { enquiryMessage, priceLabel, quoteLabel, site, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Pricing",
-  description: packages.map((p) => `${p.name}: ${p.prefix ? `${p.prefix} ` : ""}${p.price}`).join(". ") + ".",
+  title: site.showPrices ? "Pricing" : "Packages",
+  description: site.showPrices
+    ? packages.map((p) => `${p.name}: ${priceLabel(p.price, p.prefix)}`).join(". ") + "."
+    : `Website, booking and app packages from ${site.name}. Every project gets a free quote and a fixed price before work starts.`,
 };
 
 export default function PricingPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Pricing"
-        title="Simple, honest pricing"
-        lead="A clear price before work starts. Pay 50% to begin and 50% when you're happy."
+        eyebrow={site.showPrices ? "Pricing" : "Packages"}
+        title={site.showPrices ? "Simple, honest pricing" : "Packages that fit your business"}
+        lead={
+          site.showPrices
+            ? "A clear price before work starts. Pay 50% to begin and 50% when you're happy."
+            : "Every business is different, so we price each project after a free chat. You get a fixed price before any work starts, then pay 50% to begin and 50% when you're happy."
+        }
       />
 
       <Section>
@@ -34,10 +40,14 @@ export default function PricingPage() {
               )}
               <h2 className="text-lg font-bold">{p.name}</h2>
               <p className="mt-2 text-muted">{p.description}</p>
-              <p className="mt-6 text-4xl font-extrabold tracking-tight">
-                {p.prefix && <span className="mr-1.5 text-base font-medium text-muted">{p.prefix}</span>}
-                {p.price}
-              </p>
+              {site.showPrices ? (
+                <p className="mt-6 text-4xl font-extrabold tracking-tight">
+                  {p.prefix && <span className="mr-1.5 text-base font-medium text-muted">{p.prefix}</span>}
+                  {p.price}
+                </p>
+              ) : (
+                <p className="mt-6 text-2xl font-extrabold tracking-tight">{quoteLabel}</p>
+              )}
               <CheckList items={p.features} className="mt-6 flex-1" />
               <ButtonLink
                 href={whatsappLink(enquiryMessage(p.name))}
@@ -45,7 +55,7 @@ export default function PricingPage() {
                 variant={p.featured ? "primary" : "ghost"}
                 className="mt-8"
               >
-                Get started
+                {site.showPrices ? "Get started" : "Ask for a quote"}
               </ButtonLink>
             </div>
           ))}

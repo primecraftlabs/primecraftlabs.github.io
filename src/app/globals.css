@@ -117,6 +117,30 @@ body {
 }
 .page-enter { animation: page-enter 0.35s ease-out both; }
 
+/* Illustration animations (ServiceVisual, HeroVisual). They only MOVE things - nothing starts hidden - so
+   content can never get stuck invisible. Off for visitors who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-float { animation: float 4s ease-in-out infinite alternate; }
+  .anim-float-slow { animation: float 5.5s ease-in-out 0.8s infinite alternate; }
+  .anim-pop { animation: pop 2.4s ease-in-out infinite; }
+  .anim-glow { animation: glow 2.4s ease-in-out infinite; }
+  .anim-bar { animation: bar 2.8s ease-in-out infinite alternate; transform-origin: bottom; }
+  .anim-typing { animation: typing 1.2s ease-in-out infinite; }
+  .anim-dash { animation: dash 1.2s linear infinite; }
+  .anim-ping-dot::after {
+    content: ""; position: absolute; inset: 0; border-radius: 9999px; background: inherit;
+    animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold-500) 0%, transparent); }
+                  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold-500) 35%, transparent); } }
+@keyframes bar { from { transform: scaleY(0.55); } to { transform: scaleY(1); } }
+@keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-3px); } }
+@keyframes dash { to { stroke-dashoffset: -12; } }
+@keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
 /* No scroll-reveal animation on purpose: scroll-driven fades left tall stacked sections invisible on
    phones in testing. Content must always be visible; .reveal stays as a hook for a future safe effect. */
 
