@@ -16,7 +16,7 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Work"
         title="Projects that show what your business could have"
-        lead="Demo projects built the same way as client work, plus my own tools. Open any project to see the problem, the solution and how it was built."
+        lead="Demo projects built the same way as client work, plus our own tools. Open any project to see the problem, the solution and how it was built."
       />
       <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

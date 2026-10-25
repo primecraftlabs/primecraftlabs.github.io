@@ -39,7 +39,7 @@ const structuredData = {
   name: site.name,
   url: site.url,
   email: site.email,
-  telephone: site.phone,
+  ...(site.showPhone ? { telephone: site.phone } : {}),
   founder: { "@type": "Person", name: site.owner },
   areaServed: site.country,
   address: { "@type": "PostalAddress", addressLocality: site.city, addressCountry: site.countryCode },

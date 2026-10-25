@@ -61,9 +61,9 @@ export function ProjectCard({ project }: { project: Project }) {
 }
 
 export const steps = [
-  { title: "Free chat", text: "Tell me about your business on WhatsApp or a quick call. I'll suggest what will help most." },
-  { title: "Free sample design", text: "I make a sample of your homepage so you can see it before deciding anything." },
-  { title: "Build", text: "You pay 50% to start. I build and share progress so you can ask for changes." },
+  { title: "Free chat", text: "Tell us about your business on WhatsApp or a quick call. We'll suggest what will help most." },
+  { title: "Free sample design", text: "We make a sample of your homepage so you can see it before deciding anything." },
+  { title: "Build", text: "You pay 50% to start. We build and share progress so you can ask for changes." },
   { title: "Launch & support", text: "Your site goes live, you pay the rest, and you get one month of free fixes." },
 ];
 
@@ -101,7 +101,7 @@ export function Faq({ items = faqs }: { items?: typeof faqs }) {
 
 export function CtaBand({
   title = "Let's grow your business",
-  text = "Message me for a free sample design. I usually reply the same day.",
+  text = "Message us for a free sample design. We usually reply the same day.",
 }: {
   title?: string;
   text?: string;

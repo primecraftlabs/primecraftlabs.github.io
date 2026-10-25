@@ -33,11 +33,13 @@ export function Footer() {
                 <Icon name="whatsapp" className="size-4" /> WhatsApp
               </a>
             </li>
-            <li>
-              <a href={`tel:${site.phone}`} className="flex items-center gap-2 hover:text-fg">
-                <Icon name="call" className="size-4" /> {site.phoneDisplay}
-              </a>
-            </li>
+            {site.showPhone && (
+              <li>
+                <a href={`tel:${site.phone}`} className="flex items-center gap-2 hover:text-fg">
+                  <Icon name="call" className="size-4" /> {site.phoneDisplay}
+                </a>
+              </li>
+            )}
             <li>
               <a href={`mailto:${site.email}`} className="flex items-center gap-2 [overflow-wrap:anywhere] hover:text-fg">
                 <Icon name="mail" className="size-4 shrink-0" /> {site.email}

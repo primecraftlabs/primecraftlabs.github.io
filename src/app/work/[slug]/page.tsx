@@ -93,8 +93,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             <div className="rounded-2xl border border-line bg-accent-soft p-6">
               <h2 className="font-bold">This demo is being built</h2>
               <p className="mt-2 text-muted">
-                The live version will be linked here soon. Want the same for your business? Message me and I&apos;ll show
-                you a free sample.
+                The live version will be linked here soon. Want the same for your business? Message us and we&apos;ll
+                show you a free sample.
               </p>
             </div>
           )}

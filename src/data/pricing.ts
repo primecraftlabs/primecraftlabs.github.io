@@ -47,7 +47,7 @@ export const packages = [
 export const faqs = [
   {
     q: "Can I see something before I pay?",
-    a: "Yes. I make a free sample of your homepage first, so you can see what your website will look like before deciding anything.",
+    a: "Yes. We make a free sample of your homepage first, so you can see what your website will look like before deciding anything.",
   },
   {
     q: "How do payments work?",
@@ -55,11 +55,11 @@ export const faqs = [
   },
   {
     q: "How long does it take?",
-    a: "It depends on the size of the project. You get a clear timeline before any work starts, and I share progress as I build.",
+    a: "It depends on the size of the project. You get a clear timeline before any work starts, and we share progress as we build.",
   },
   {
     q: "Do I need to buy a domain and hosting?",
-    a: "A domain (like yourbusiness.com) is bought in your name and paid directly to the provider. I help you choose and set it up so you always own it.",
+    a: "A domain (like yourbusiness.com) is bought in your name and paid directly to the provider. We help you choose and set it up so you always own it.",
   },
   {
     q: "What happens after the website is live?",
@@ -67,6 +67,6 @@ export const faqs = [
   },
   {
     q: `Do you only work with businesses in ${site.city}?`,
-    a: `I'm based in ${site.city} and happy to meet local clients, but everything can also be done online over WhatsApp and video calls.`,
+    a: `We're based in ${site.city} and happy to meet local clients, but everything can also be done online over WhatsApp and video calls.`,
   },
 ];

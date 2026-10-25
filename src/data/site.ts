@@ -16,6 +16,8 @@ export const site = {
   email: brand.contact.email,
   phone: brand.contact.phone,
   phoneDisplay: brand.contact.phoneDisplay,
+  // false = no visible phone number or click-to-call anywhere; customers use WhatsApp, email or the form.
+  showPhone: brand.contact.showPhone,
   whatsapp: brand.contact.whatsapp,
   url: brand.urls.site,
   github: brand.urls.github,
@@ -34,7 +36,7 @@ export const nav = [
 
 /** Pre-filled WhatsApp message; pass a topic (service or package name) for a specific enquiry. */
 export function enquiryMessage(topic?: string) {
-  const intro = `Hi ${site.ownerFirstName}, I saw the ${site.name} website`;
+  const intro = `Hi ${site.name}, I saw your website`;
   return topic ? `${intro} and I'm interested in: ${topic}.` : `${intro} and I'm interested in a website/app for my business.`;
 }
 

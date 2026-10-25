@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    `${site.name} is founded by ${site.owner}, a software engineer and team lead from ${site.city} building mobile apps, backends and websites.`,
+    `${site.name} is a ${site.city}-based studio building websites, mobile apps and backends, founded by software engineer ${site.owner}.`,
 };
 
 const highlights = [
@@ -44,21 +44,25 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="space-y-5 text-lg text-muted">
-            <p className="text-2xl font-bold text-fg">I&apos;m {site.owner}, founder of {site.name}.</p>
+            <p className="text-2xl font-bold text-fg">We build software that helps businesses grow.</p>
             <p>
-              I&apos;m a software engineer and team lead from {site.city} with a B.Tech in Information Technology. In my
-              professional work I lead development of a cross-platform mobile product end to end: the Android + iOS app,
-              Go microservices on Google Cloud, real-time audio/video, payments, notifications, and the cloud
-              environments and release pipelines behind it.
+              {site.name} is a {site.city}-based studio for websites, mobile apps and backends. We work with local
+              businesses that want more customers online, and with startups that need a reliable app or backend.
             </p>
             <p>
-              With {site.name} I bring the same engineering quality to small businesses and startups: clean code, fast
-              pages, and software that&apos;s easy to grow later.
+              The studio was founded by {site.owner}, a software engineer and team lead with a B.Tech in Information
+              Technology, who leads development of a cross-platform product end to end: the Android + iOS app, Go
+              microservices on Google Cloud, real-time audio/video, payments, notifications, and the cloud environments
+              and release pipelines behind it.
+            </p>
+            <p>
+              We bring that same engineering quality to every project: clean code, fast pages, and software that&apos;s
+              easy to grow later.
             </p>
           </div>
           <Reveal>
             <div className="rounded-2xl border border-line bg-surface p-6 sm:p-8">
-              <h2 className="mb-5 text-xl font-bold">Highlights</h2>
+              <h2 className="mb-5 text-xl font-bold">Founder&apos;s experience</h2>
               <CheckList items={highlights} />
             </div>
           </Reveal>
@@ -66,7 +70,7 @@ export default function AboutPage() {
       </Section>
 
       <Section alt>
-        <SectionHeading eyebrow="Skills" title="Tools and technologies" />
+        <SectionHeading eyebrow="Technology" title="What we work with" />
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((s) => (
             <Reveal key={s.group}>
@@ -78,7 +82,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="How I work" title="What you can expect" />
+        <SectionHeading eyebrow="How we work" title="What you can expect" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v) => (
             <div key={v.title} className="rounded-2xl border border-line bg-surface p-6">

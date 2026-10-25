@@ -77,7 +77,7 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <CtaBand title="Not sure what you need?" text="Tell me about your business on WhatsApp and I'll suggest what will help most. It's free." />
+      <CtaBand title="Not sure what you need?" text="Tell us about your business on WhatsApp and we'll suggest what will help most. It's free." />
     </>
   );
 }

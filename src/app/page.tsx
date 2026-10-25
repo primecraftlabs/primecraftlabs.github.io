@@ -46,7 +46,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <WhatsAppButton />
               <ButtonLink href="/work/" variant="ghost">
-                See my work <Icon name="arrow" className="size-4" />
+                See our work <Icon name="arrow" className="size-4" />
               </ButtonLink>
             </div>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
 
       <Section alt>
-        <SectionHeading eyebrow="Who I help" title="Two kinds of clients, one standard of quality" />
+        <SectionHeading eyebrow="Who we help" title="Two kinds of clients, one standard of quality" />
         <div className="grid gap-6 md:grid-cols-2">
           {audiences.map((a) => (
             <Reveal key={a.title}>
@@ -82,7 +82,7 @@ export default function Home() {
       <Section>
         <SectionHeading
           eyebrow="Services"
-          title="What I can build for you"
+          title="What we can build for you"
           lead="Simple tools that help customers find you, trust you and contact you, plus serious engineering when you need it."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

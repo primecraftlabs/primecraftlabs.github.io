@@ -6,12 +6,13 @@ import { site, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get a free sample design for your business website. Message ${site.name} on WhatsApp, email or phone.`,
+  description: `Get a free sample design for your business website. Message ${site.name} on WhatsApp${site.showPhone ? ", email or phone" : " or email"}.`,
 };
 
-const methods: { icon: IconName; title: string; value: string; href: string; external?: boolean }[] = [
+type Method = { icon: IconName; title: string; value: string; href: string; external?: boolean };
+const methods: Method[] = [
   { icon: "whatsapp", title: "WhatsApp", value: "Fastest reply", href: whatsappLink(), external: true },
-  { icon: "call", title: "Phone", value: site.phoneDisplay, href: `tel:${site.phone}` },
+  ...(site.showPhone ? [{ icon: "call", title: "Phone", value: site.phoneDisplay, href: `tel:${site.phone}` } as Method] : []),
   { icon: "mail", title: "Email", value: site.email, href: `mailto:${site.email}` },
 ];
 
@@ -21,7 +22,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Let's talk about your business"
-        lead="Tell me what you need and get a free sample design. I usually reply the same day."
+        lead="Tell us what you need and get a free sample design. We usually reply the same day."
       />
       <Section>
         <div className="grid gap-10 lg:grid-cols-3">
