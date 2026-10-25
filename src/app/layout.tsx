@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/data/site";
@@ -85,9 +86,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         {site.cloudflareAnalyticsToken && (
-          <script
-            type="module"
+          <Script
             src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
             data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}
           />
         )}

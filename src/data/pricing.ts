@@ -1,4 +1,4 @@
-import { amount, site } from "./site";
+import { amount } from "./site";
 
 export const packages = [
   {
