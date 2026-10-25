@@ -182,7 +182,7 @@ function RealtimeVisual() {
               <span key={c} className={`size-4 rounded-full border-2 border-mist ${c}`} />
             ))}
           </div>
-          <span className="flex items-center gap-1 rounded-full bg-red-500 px-1.5 py-0.5 text-[8px] font-bold text-white">
+          <span className="flex items-center gap-1 rounded-full bg-red-700 px-1.5 py-0.5 text-[8px] font-bold text-white">
             <span className="anim-ping-dot relative size-1 rounded-full bg-white" /> LIVE
           </span>
         </div>
@@ -225,7 +225,7 @@ function DashboardVisual() {
           {["Sales", "Orders", "Visitors"].map((k, i) => (
             <div key={k} className="rounded bg-white p-1.5 shadow-sm">
               <div className="text-[8px] font-semibold text-navy-900/75">{k}</div>
-              <div className={`text-[11px] font-extrabold ${i === 0 ? "text-gold-700" : "text-navy-900"}`}>
+              <div className={`text-[11px] font-extrabold ${i === 0 ? "text-whatsapp" : "text-navy-900"}`}>
                 {["+24%", "312", "4.1k"][i]}
               </div>
             </div>
