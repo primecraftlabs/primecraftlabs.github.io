@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* The ONLY place colours are defined. Brand values mirror jk/brand/brand.json -> theme.colors
+   (ink, navy, steel, gold, goldLight, goldDark, mist, gemDark*). Components use token classes only. */
+:root {
+  /* Fixed brand colours (same in light and dark) */
+  --navy-900: #0f1e3d;
+  --navy-800: #1b2d5c;
+  --navy-600: #2b4588;
+  --gold-300: #f5c875;
+  --gold-500: #e9a23b;
+  --gold-700: #c9821f;
+  --mist: #f6f7fb;
+
+  /* Logo gem facets: crown (gold) + pavilion (navy, lightened in dark mode) */
+  --gem-1: var(--gold-300);
+  --gem-2: var(--gold-500);
+  --gem-3: var(--gold-700);
+  --gem-4: var(--navy-600);
+  --gem-5: var(--navy-800);
+  --gem-6: var(--navy-900);
+
+  /* Semantic tokens */
+  --bg: #ffffff;
+  --bg-alt: #f6f7fb;
+  --surface: #ffffff;
+  --fg: #0f1e3d;
+  --muted: #4f5b75;
+  --line: #e2e6ef;
+  --brand: #1b2d5c;
+  --brand-strong: #0f1e3d;
+  --brand-soft: #e8ecf7;
+  --on-brand: #ffffff;
+  --accent: #e9a23b;
+  --accent-text: #9a5c0b;
+  --accent-display: #c9821f;
+  --accent-soft: #fdf3e2;
+  --ink: #0f1e3d;
+  --whatsapp: #157a3d;
+  --whatsapp-strong: #11632f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gem-4: #5b7bd5;
+    --gem-5: #3d5ba9;
+    --gem-6: #2b4588;
+
+    --bg: #0a1224;
+    --bg-alt: #0f1a33;
+    --surface: #13203d;
+    --fg: #eef1f8;
+    --muted: #a3aec7;
+    --line: #22325a;
+    --brand: #e9a23b;
+    --brand-strong: #f5c875;
+    --brand-soft: #2a2414;
+    --on-brand: #0f1e3d;
+    --accent: #e9a23b;
+    --accent-text: #f5c875;
+    --accent-display: #f5c875;
+    --accent-soft: #2a2414;
+    --ink: #0a1224;
+  }
+}
+
+@theme inline {
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-600: var(--navy-600);
+  --color-gold-300: var(--gold-300);
+  --color-gold-500: var(--gold-500);
+  --color-gold-700: var(--gold-700);
+  --color-mist: var(--mist);
+  --color-gem-1: var(--gem-1);
+  --color-gem-2: var(--gem-2);
+  --color-gem-3: var(--gem-3);
+  --color-gem-4: var(--gem-4);
+  --color-gem-5: var(--gem-5);
+  --color-gem-6: var(--gem-6);
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-on-brand: var(--on-brand);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  /* Large display text only (3:1 contrast on white); use accent-text for small text */
+  --color-accent-display: var(--accent-display);
+  --color-ink: var(--ink);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-strong: var(--whatsapp-strong);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Page enter animation (app/template.tsx re-mounts on every navigation) */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.page-enter { animation: page-enter 0.35s ease-out both; }
+
+/* No scroll-reveal animation on purpose: scroll-driven fades left tall stacked sections invisible on
+   phones in testing. Content must always be visible; .reveal stays as a hook for a future safe effect. */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .page-enter { animation: none; }
+}
+
+/* FAQ accordion marker */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .faq-icon { transform: rotate(45deg); }
