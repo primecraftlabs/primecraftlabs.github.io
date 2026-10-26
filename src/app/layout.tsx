@@ -3,6 +3,7 @@ import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { LeadTracking } from "@/components/LeadTracking";
 import { site } from "@/data/site";
 import { homeDescription, homeTitle, jsonLd, organizationId } from "@/lib/seo";
 import "./globals.css";
@@ -85,6 +86,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        {site.googleTagId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.googleTagId}`} strategy="afterInteractive" />
+            <Script id="google-tag" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${site.googleTagId}');`}
+            </Script>
+            <LeadTracking />
+          </>
+        )}
         {site.cloudflareAnalyticsToken && (
           <Script
             src="https://static.cloudflareinsights.com/beacon.min.js"

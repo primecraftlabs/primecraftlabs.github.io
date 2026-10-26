@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { site, whatsappLink } from "@/data/site";
 import { enquiryText } from "@/lib/enquiry";
+import { trackLead } from "@/lib/track";
 
 const needs = ["Business website", "Website + online booking", "Mobile app (Android + iOS)", "Web app / backend", "Something else"];
 const budgets = ["Not sure yet", "Under ₹10,000", "₹10,000 – ₹25,000", "₹25,000 – ₹1,00,000", "Above ₹1,00,000"];
@@ -27,6 +28,7 @@ export function ContactForm() {
 
     const whatsapp = whatsappLink(enquiryText((field) => data.get(field), site.name));
     if (usesWhatsApp) {
+      trackLead("form_whatsapp");
       window.location.href = whatsapp;
       return;
     }
@@ -42,6 +44,7 @@ export function ContactForm() {
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
       setStatus("sent");
+      trackLead("form");
     } catch {
       setStatus("error");
     }

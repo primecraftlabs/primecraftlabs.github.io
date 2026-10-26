@@ -33,6 +33,8 @@ export const site = {
   googleSiteVerification: brand.seo.googleSiteVerification,
   // Cloudflare Web Analytics token (free, cookie-free visitor counter). Empty = no analytics script.
   cloudflareAnalyticsToken: brand.analytics.cloudflareToken,
+  // Google tag (GA4 / Google Ads), e.g. "G-XXXX". Empty = no Google tag. Lead clicks are sent as events.
+  googleTagId: brand.analytics.googleTagId,
   // Social profile URLs from brand.json; empty ones are skipped everywhere (footer, structured data).
   social: Object.entries(brand.social)
     .filter(([, url]) => url)
