@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { site, whatsappLink } from "@/data/site";
 import { enquiryText } from "@/lib/enquiry";
@@ -113,6 +114,13 @@ export function ContactForm() {
       {usesWhatsApp && (
         <p className="text-sm text-muted">WhatsApp opens with your details filled in. Just press send.</p>
       )}
+      <p className="text-sm text-muted">
+        We use your details only to reply to you. See our{" "}
+        <Link href="/privacy/" className="font-semibold text-fg underline underline-offset-4">
+          Privacy Policy
+        </Link>
+        .
+      </p>
       {status === "error" && (
         <p role="alert" className="text-sm text-red-600 dark:text-red-400">
           Something went wrong.{" "}

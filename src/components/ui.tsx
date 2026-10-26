@@ -116,7 +116,8 @@ export function CheckList({ items, className = "" }: { items: string[]; classNam
       {items.map((item) => (
         <li key={item} className="flex gap-3 text-muted">
           <Icon name="check" className="mt-0.5 size-5 shrink-0 text-brand" />
-          <span>{item}</span>
+          {/* min-w-0 + anywhere: long words/URLs wrap instead of widening the page on small phones */}
+          <span className="min-w-0 [overflow-wrap:anywhere]">{item}</span>
         </li>
       ))}
     </ul>

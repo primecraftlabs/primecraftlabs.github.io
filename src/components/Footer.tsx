@@ -64,8 +64,13 @@ export function Footer() {
         </div>
       </Container>
       <div className="border-t border-line">
-        <Container className="py-6 text-sm text-muted">
-          © {new Date().getFullYear()} {site.name}. Websites, apps &amp; backends{site.showCity ? ` from ${site.city}` : ""}.
+        <Container className="flex flex-wrap justify-between gap-x-6 gap-y-2 py-6 text-sm text-muted">
+          <span>
+            © {new Date().getFullYear()} {site.name}. Websites, apps &amp; backends{site.showCity ? ` from ${site.city}` : ""}.
+          </span>
+          <Link href="/privacy/" className="underline-offset-4 hover:text-fg hover:underline">
+            Privacy Policy
+          </Link>
         </Container>
       </div>
     </footer>
