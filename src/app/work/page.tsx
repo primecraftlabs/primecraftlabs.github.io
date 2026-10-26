@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   path: "/work/",
   title: "Our Work: Business Websites, Booking Systems & Apps",
-  description: `Demo projects and tools by ${site.name}: a restaurant website with WhatsApp ordering, a clinic booking system and an AI lead finder.`,
+  description: `Projects and tools by ${site.name}: a restaurant website with WhatsApp ordering, a clinic booking system and an AI lead finder.`,
 });
 
 export default function WorkPage() {
@@ -18,7 +18,7 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Work"
         title="Projects that show what your business could have"
-        lead="Demo projects built the same way as client work, plus our own tools. Open any project to see the problem, the solution and how it was built."
+        lead="Concept projects built the same way as client work, plus our own tools. Open any project to see the problem, the solution and how it was built."
       />
       <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

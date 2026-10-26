@@ -21,20 +21,20 @@ export const projects: Project[] = [
   {
     slug: "restaurant-website",
     title: "Restaurant website",
-    category: "Demo · Local business",
+    category: "Concept project · Restaurant",
     status: "live",
     image: "/work/restaurant-website.png",
     liveUrl: site.urls.demoRestaurant,
-    summary: "Menu, photos, location and one-tap WhatsApp ordering for a local restaurant or café.",
+    summary: "Masala Lane Kitchen: a complete restaurant website with dish photos, full menu and WhatsApp ordering.",
     problem:
       "Most local restaurants rely on delivery apps and phone calls. Customers can't see the full menu, prices or photos, and the restaurant pays commission on every order.",
     solution:
-      "A fast, mobile-first website with the full menu, photos and reviews, and a WhatsApp order button that sends the order straight to the owner, with no commission.",
+      "A fast, mobile-first website with the full menu, dish photos, hours and directions. Customers build their order on the site and send it to the restaurant on WhatsApp in one tap, with no commission. Masala Lane Kitchen is a concept restaurant we designed to show the finished result.",
     features: [
-      "Full menu with categories, prices and photos",
-      "Order on WhatsApp with the items pre-filled",
+      "Full menu with dish photos, prices and veg/non-veg marks",
+      "Order cart: customers review dishes and total, then send it on WhatsApp",
       "Opening hours, location and directions",
-      "Google-friendly setup so people find it in search",
+      "Mobile-first: works from small phones up to desktop",
     ],
     tech: ["Next.js", "Tailwind CSS", "WhatsApp"],
     codeUrl: site.urls.demoRestaurantCode,

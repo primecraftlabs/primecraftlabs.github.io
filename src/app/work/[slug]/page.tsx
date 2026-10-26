@@ -67,11 +67,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               <div className="mt-8 flex flex-wrap gap-3">
                 {project.liveUrl ? (
                   <ButtonLink href={project.liveUrl} external>
-                    Open live demo <Icon name="arrow" className="size-4" />
+                    Open live site <Icon name="arrow" className="size-4" />
                   </ButtonLink>
                 ) : (
                   <span className="inline-flex items-center rounded-xl border border-dashed border-line px-5 py-3 font-semibold text-muted">
-                    Live demo coming soon
+                    Live site coming soon
                   </span>
                 )}
                 {project.codeUrl && (

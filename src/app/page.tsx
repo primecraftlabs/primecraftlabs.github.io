@@ -98,7 +98,7 @@ export default function Home() {
       </Section>
 
       <Section alt>
-        <SectionHeading eyebrow="Work" title="Recent projects" lead="Demo projects show what your business could have. Try them on your phone." />
+        <SectionHeading eyebrow="Work" title="Recent projects" lead="Complete websites built to client standard. Try them on your phone." />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Reveal key={project.slug}>
