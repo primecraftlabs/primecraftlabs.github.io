@@ -51,7 +51,7 @@ export function Footer() {
             {site.social.map((s) => (
               <li key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer me" className="flex items-center gap-2 hover:text-fg">
-                  <Icon name="globe" className="size-4" /> {s.label}
+                  <Icon name={s.network === "googleBusiness" ? "pin" : "globe"} className="size-4" /> {s.label}
                 </a>
               </li>
             ))}

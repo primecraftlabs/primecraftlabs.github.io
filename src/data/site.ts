@@ -4,6 +4,13 @@
  */
 import brand from "@/config/brand.json";
 
+/** Display names for the social/profile links in brand.json (keys not listed are just capitalised). */
+const socialLabels: Record<string, string> = {
+  googleBusiness: "Google Maps",
+  youtube: "YouTube",
+  linkedin: "LinkedIn",
+};
+
 export const site = {
   name: brand.name,
   wordmark: brand.wordmark,
@@ -38,7 +45,11 @@ export const site = {
   // Social profile URLs from brand.json; empty ones are skipped everywhere (footer, structured data).
   social: Object.entries(brand.social)
     .filter(([, url]) => url)
-    .map(([network, url]) => ({ label: network[0].toUpperCase() + network.slice(1), url: url as string })),
+    .map(([network, url]) => ({
+      network,
+      label: socialLabels[network] ?? network[0].toUpperCase() + network.slice(1),
+      url: url as string,
+    })),
 };
 
 export const nav = [
