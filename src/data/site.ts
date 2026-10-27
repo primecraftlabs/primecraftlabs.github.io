@@ -13,6 +13,8 @@ const socialLabels: Record<string, string> = {
 
 export const site = {
   name: brand.name,
+  /** Short name Google may show as the site name (structured data). */
+  alternateName: brand.alternateName,
   wordmark: brand.wordmark,
   owner: brand.owner.name,
   ownerFirstName: brand.owner.firstName,
