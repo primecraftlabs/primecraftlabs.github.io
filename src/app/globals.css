@@ -88,6 +88,11 @@
 }
 .solid-lift:hover { transform: translateY(-1px); }
 .solid-lift:active { transform: translateY(1px); box-shadow: 2px 2px 6px var(--soft-dark), -2px -2px 6px var(--soft-light); }
+/* On dark surfaces (CTA panel, footer) the white half of the soft pair would glow - use a plain dark drop shadow */
+/* Logo gem on dark surfaces: lighter pavilion, as in the brand's dark logo (brand.json gemDark*) */
+.on-dark { --gem-4: #5b7bd5; --gem-5: #3d5ba9; --gem-6: #2b4588; }
+.on-dark .solid-lift { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+.on-dark .solid-lift:active { box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35); }
 
 @theme inline {
   --color-navy-900: var(--navy-900);
@@ -198,3 +203,5 @@ body {
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .faq-icon { transform: rotate(45deg); }
+/* open question: its + knob looks pressed in */
+details[open] .faq-knob { box-shadow: inset 3px 3px 6px var(--soft-dark), inset -3px -3px 6px var(--soft-light); }

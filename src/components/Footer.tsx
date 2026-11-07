@@ -6,7 +6,7 @@ import { Container } from "./ui";
 
 export function Footer() {
   return (
-    <footer className="mt-8 rounded-t-[2.5rem] bg-ink text-on-ink">
+    <footer className="on-dark mt-8 rounded-t-[2.5rem] bg-ink text-on-ink">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1.4fr]">
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo />

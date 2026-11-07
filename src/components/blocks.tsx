@@ -125,7 +125,7 @@ export function Faq({ items = faqs }: { items?: typeof faqs }) {
         <details key={item.q} className="soft group rounded-3xl px-6 py-5">
           <summary className="flex cursor-pointer items-center justify-between gap-4 font-bold">
             {item.q}
-            <span className="soft-sm grid size-9 shrink-0 place-items-center rounded-full text-accent-text group-open:shadow-none">
+            <span className="faq-knob soft-sm grid size-9 shrink-0 place-items-center rounded-full text-accent-text">
               <Icon name="plus" className="faq-icon size-4 transition" />
             </span>
           </summary>
@@ -147,7 +147,7 @@ export function CtaBand({
   return (
     <section className="py-16 sm:py-24">
       <Container>
-        <div className="solid-lift relative overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-center text-on-ink sm:px-12 sm:py-20">
+        <div className="solid-lift on-dark relative overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-center text-on-ink sm:px-12 sm:py-20">
           <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-accent to-transparent" />
           <h2 className="text-3xl font-extrabold tracking-tight text-balance sm:text-5xl">
             {title}
@@ -156,8 +156,8 @@ export function CtaBand({
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-on-ink-muted">{text}</p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <WhatsAppButton className="shadow-none" />
-            <ButtonLink href="/contact/" variant="gold" className="shadow-none">
+            <WhatsAppButton />
+            <ButtonLink href="/contact/" variant="gold">
               Send an enquiry
             </ButtonLink>
           </div>
