@@ -31,25 +31,30 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <ContactForm />
           </div>
-          <aside className="space-y-4">
+          <aside className="space-y-5">
             {methods.map((m) => (
               <a
                 key={m.title}
                 href={m.href}
                 {...(m.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition hover:-translate-y-0.5 hover:border-brand/50"
+                className="soft soft-press group flex items-center gap-4 rounded-3xl p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
-                <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
+                <span
+                  className={`soft-inset grid size-12 shrink-0 place-items-center rounded-2xl ${
+                    m.icon === "whatsapp" ? "text-whatsapp" : "text-accent-text"
+                  }`}
+                >
                   <Icon name={m.icon} className="size-6" />
                 </span>
-                <span className="min-w-0">
+                <span className="min-w-0 flex-1">
                   <span className="block font-bold">{m.title}</span>
                   <span className="block text-sm break-all text-muted">{m.value}</span>
                 </span>
+                <Icon name="arrow" className="size-4 shrink-0 text-accent-text transition group-hover:translate-x-1" />
               </a>
             ))}
-            <div className="flex items-center gap-4 rounded-2xl border border-line bg-bg-alt p-5">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-text">
+            <div className="soft-inset flex items-center gap-4 rounded-3xl p-5">
+              <span className="soft-sm grid size-12 shrink-0 place-items-center rounded-2xl text-accent-text">
                 <Icon name="pin" className="size-6" />
               </span>
               <span>

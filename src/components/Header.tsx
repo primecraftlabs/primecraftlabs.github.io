@@ -15,7 +15,7 @@ export function Wordmark() {
         {site.wordmark.first}
         <span className="text-accent">{site.wordmark.second}</span>
       </span>
-      <span className="mt-1 block text-[10px] font-bold tracking-[0.42em] text-muted">{site.wordmark.suffix}</span>
+      <span className="mt-1 block text-[10px] font-bold tracking-[0.42em] opacity-60">{site.wordmark.suffix}</span>
     </span>
   );
 }
@@ -35,53 +35,56 @@ export function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
-        <Logo />
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-          {nav.map((item) => (
+    <header className="sticky top-0 z-50 pt-3 sm:pt-4">
+      <Container>
+        <div className="soft flex h-16 items-center justify-between rounded-full bg-bg/90 pr-2 pl-5 backdrop-blur-md sm:pl-6">
+          <Logo />
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`rounded-full px-4 py-2 font-semibold transition ${
+                  isActive(item.href) ? "soft-inset text-fg" : "text-muted hover:text-fg"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
-              key={item.href}
-              href={item.href}
-              className={`font-medium transition hover:text-fg ${isActive(item.href) ? "text-brand" : "text-muted"}`}
+              href="/contact/"
+              className="solid-lift ml-2 rounded-full bg-accent px-5 py-2.5 font-bold text-ink hover:bg-gold-300"
             >
-              {item.label}
+              Get a free sample
             </Link>
-          ))}
-          <Link
-            href="/contact/"
-            className="rounded-xl bg-brand px-4 py-2 font-semibold text-on-brand transition hover:bg-brand-strong"
+          </nav>
+          <button
+            type="button"
+            className="soft-sm soft-press grid size-11 place-items-center rounded-full md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
           >
-            Get a free sample
-          </Link>
-        </nav>
-        <button
-          type="button"
-          className="-mr-2 p-2 md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen(!open)}
-        >
-          <Icon name={open ? "close" : "menu"} className="size-6" />
-        </button>
-      </Container>
-      {open && (
-        <nav id="mobile-menu" className="border-t border-line bg-bg md:hidden" aria-label="Mobile">
-          <Container className="flex flex-col py-3">
+            <Icon name={open ? "close" : "menu"} className="size-5" />
+          </button>
+        </div>
+        {open && (
+          <nav id="mobile-menu" className="soft mt-3 rounded-[1.75rem] p-3 md:hidden" aria-label="Mobile">
             {[...nav, { href: "/contact/", label: "Contact" }].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`py-3 font-medium ${isActive(item.href) ? "text-brand" : "text-fg"}`}
+                className={`block rounded-2xl px-4 py-3 font-semibold ${isActive(item.href) ? "soft-inset" : ""}`}
               >
                 {item.label}
               </Link>
             ))}
-          </Container>
-        </nav>
-      )}
+          </nav>
+        )}
+      </Container>
     </header>
   );
 }

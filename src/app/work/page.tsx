@@ -21,7 +21,7 @@ export default function WorkPage() {
         lead="Concept projects built the same way as client work, plus our own tools. Open any project to see the problem, the solution and how it was built."
       />
       <Section>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Reveal key={project.slug}>
               <ProjectCard project={project} />

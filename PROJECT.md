@@ -6,7 +6,7 @@
 - **Showable:** yes
 - **Stack:** Next.js 16 + Tailwind CSS 4, static export (`output: "export"`), GitHub Pages via Actions
 - **Repo / live link:** derived from `github.user` in `jk/brand/brand.json` (currently
-  https://github.com/jeetuwizard/jeetuwizard.github.io -> https://jeetuwizard.github.io)
+  https://github.com/primecraftlabs/primecraftlabs.github.io -> https://primecraftlabs.github.io)
 
 ## Pages
 Home, Services (`/services/#<id>`), Work + case studies (`/work/<slug>/`), About, Pricing (+FAQ), Contact

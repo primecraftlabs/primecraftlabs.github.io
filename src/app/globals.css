@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 /* The ONLY place colours are defined. Brand values mirror jk/brand/brand.json -> theme.colors
-   (ink, navy, steel, gold, goldLight, goldDark, mist, gemDark*). Components use token classes only. */
+   (ink, navy, steel, gold, goldLight, goldDark, mist, gemDark*). Components use token classes only.
+   Design: "soft UI" (neumorphism-lite) on a porcelain canvas, light theme only (one designed look for everyone).
+   Surfaces are raised/pressed with paired shadows (.soft / .soft-inset below); main actions stay solid and
+   high-contrast (ink / gold / WhatsApp green) so they're always obvious. */
 :root {
-  /* Fixed brand colours (same in light and dark) */
+  color-scheme: light;
+
+  /* Fixed brand colours (logo gem + accents) */
   --navy-900: #0f1e3d;
   --navy-800: #1b2d5c;
   --navy-600: #2b4588;
@@ -12,7 +17,7 @@
   --gold-700: #c9821f;
   --mist: #f6f7fb;
 
-  /* Logo gem facets: crown (gold) + pavilion (navy, lightened in dark mode) */
+  /* Logo gem facets: crown (gold) + pavilion (navy) */
   --gem-1: var(--gold-300);
   --gem-2: var(--gold-500);
   --gem-3: var(--gold-700);
@@ -21,48 +26,68 @@
   --gem-6: var(--navy-900);
 
   /* Semantic tokens */
-  --bg: #ffffff;
-  --bg-alt: #f6f7fb;
-  --surface: #ffffff;
-  --fg: #0f1e3d;
-  --muted: #4f5b75;
-  --line: #e2e6ef;
-  --brand: #1b2d5c;
-  --brand-strong: #0f1e3d;
-  --brand-soft: #e8ecf7;
+  --bg: #e8ecf1;            /* porcelain canvas */
+  --bg-alt: #e8ecf1;        /* same canvas: soft UI needs one continuous surface */
+  --surface: #e8ecf1;       /* raised surfaces share the canvas colour - shadows give the shape */
+  --fg: #131823;            /* ink text (contrast ~15:1 on the canvas) */
+  --muted: #4b5466;         /* secondary text (~6.5:1) */
+  --line: #d3dae3;
+  --brand: #131823;         /* primary actions: solid ink */
+  --brand-strong: #000000;
+  --brand-soft: #dde3ea;
   --on-brand: #ffffff;
-  --accent: #e9a23b;
-  --accent-text: #9a5c0b;
-  --accent-display: #c9821f;
-  --accent-soft: #fdf3e2;
-  --ink: #0f1e3d;
+  --accent: #e9a23b;        /* signature gold */
+  --accent-text: #8a5206;   /* gold for small text (~5.5:1) */
+  --accent-display: #b46c0c;/* gold for large headings (>3:1) */
+  --accent-soft: #f2e2c4;
+  --ink: #131823;
+  --ink-soft: #1d2433;      /* dark bands (CTA, footer) */
+  --on-ink: #eef1f6;
+  --on-ink-muted: #aab3c2;
+  --danger: #b42318;       /* errors (~5.5:1 on the canvas) */
   --whatsapp: #157a3d;
   --whatsapp-strong: #11632f;
+
+  /* Soft UI light + shadow (paired on every raised/pressed surface) */
+  --soft-light: rgba(255, 255, 255, 0.95);
+  --soft-dark: rgba(150, 163, 184, 0.55);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --gem-4: #5b7bd5;
-    --gem-5: #3d5ba9;
-    --gem-6: #2b4588;
-
-    --bg: #0a1224;
-    --bg-alt: #0f1a33;
-    --surface: #13203d;
-    --fg: #eef1f8;
-    --muted: #a3aec7;
-    --line: #22325a;
-    --brand: #e9a23b;
-    --brand-strong: #f5c875;
-    --brand-soft: #2a2414;
-    --on-brand: #0f1e3d;
-    --accent: #e9a23b;
-    --accent-text: #f5c875;
-    --accent-display: #f5c875;
-    --accent-soft: #2a2414;
-    --ink: #0a1224;
-  }
+/* Raised: a surface that pops out of the canvas */
+.soft {
+  background: var(--surface);
+  box-shadow: 10px 10px 22px var(--soft-dark), -10px -10px 22px var(--soft-light);
 }
+.soft-sm {
+  background: var(--surface);
+  box-shadow: 5px 5px 11px var(--soft-dark), -5px -5px 11px var(--soft-light);
+}
+/* Pressed: a well or an active control, pushed into the canvas */
+.soft-inset {
+  background: var(--surface);
+  box-shadow: inset 5px 5px 10px var(--soft-dark), inset -5px -5px 10px var(--soft-light);
+}
+/* Deep well: the hero window (a stronger pressed-in look so it reads as a frame) */
+.soft-well {
+  background: var(--surface);
+  box-shadow: inset 12px 12px 24px var(--soft-dark), inset -12px -12px 24px var(--soft-light);
+}
+/* Tactile controls: raised, sink in when pressed */
+.soft-press {
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.soft-press:hover { transform: translateY(-1px); }
+.soft-press:active {
+  transform: translateY(0);
+  box-shadow: inset 4px 4px 9px var(--soft-dark), inset -4px -4px 9px var(--soft-light);
+}
+/* Solid buttons (ink/gold/green) get a soft drop shadow instead of the paired one */
+.solid-lift {
+  box-shadow: 6px 6px 14px var(--soft-dark), -6px -6px 14px var(--soft-light);
+  transition: box-shadow 0.18s ease, transform 0.18s ease, background-color 0.18s ease;
+}
+.solid-lift:hover { transform: translateY(-1px); }
+.solid-lift:active { transform: translateY(1px); box-shadow: 2px 2px 6px var(--soft-dark), -2px -2px 6px var(--soft-light); }
 
 @theme inline {
   --color-navy-900: var(--navy-900);
@@ -94,6 +119,10 @@
   /* Large display text only (3:1 contrast on white); use accent-text for small text */
   --color-accent-display: var(--accent-display);
   --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
+  --color-danger: var(--danger);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-strong: var(--whatsapp-strong);
   --font-sans: var(--font-jakarta);
@@ -140,6 +169,22 @@ body {
 @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-3px); } }
 @keyframes dash { to { stroke-dashoffset: -12; } }
 @keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+/* Endless hero: columns of phone screens scroll forever. Each track holds its list TWICE, so moving it by
+   exactly half its height lands on an identical frame - the loop has no visible start or end. */
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-up { animation: marquee-up var(--marquee-speed, 48s) linear infinite; }
+  .marquee-down { animation: marquee-down var(--marquee-speed, 48s) linear infinite; }
+  .marquee:hover .marquee-up,
+  .marquee:hover .marquee-down { animation-play-state: paused; }
+}
+@keyframes marquee-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes marquee-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+/* Soft fade at the top and bottom edges of the hero window */
+.fade-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
 
 /* No scroll-reveal animation on purpose: scroll-driven fades left tall stacked sections invisible on
    phones in testing. Content must always be visible; .reveal stays as a hook for a future safe effect. */

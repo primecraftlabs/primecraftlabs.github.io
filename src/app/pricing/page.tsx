@@ -33,29 +33,32 @@ export default function PricingPage() {
       />
 
       <Section>
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
           {packages.map((p) => (
             <div
               key={p.name}
-              className={`relative flex flex-col rounded-2xl border bg-surface p-7 shadow-sm ${
-                p.featured ? "border-2 border-accent shadow-lg" : "border-line"
+              className={`soft relative flex flex-col rounded-[1.75rem] p-7 sm:p-8 ${
+                p.featured ? "ring-2 ring-accent ring-offset-4 ring-offset-bg" : ""
               }`}
             >
               {p.featured && (
-                <span className="absolute -top-3.5 left-7 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">
+                <span className="solid-lift absolute -top-3.5 left-7 inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1 text-xs font-bold text-on-ink">
+                  <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
                   Most popular
                 </span>
               )}
-              <h2 className="text-lg font-bold">{p.name}</h2>
+              <h2 className="text-lg font-extrabold tracking-tight">{p.name}</h2>
               <p className="mt-2 text-muted">{p.description}</p>
-              {site.showPrices ? (
-                <p className="mt-6 text-4xl font-extrabold tracking-tight">
-                  {p.prefix && <span className="mr-1.5 text-base font-medium text-muted">{p.prefix}</span>}
-                  {p.price}
-                </p>
-              ) : (
-                <p className="mt-6 text-2xl font-extrabold tracking-tight">{quoteLabel}</p>
-              )}
+              <div className="soft-inset mt-6 rounded-2xl px-5 py-4">
+                {site.showPrices ? (
+                  <p className="text-4xl font-extrabold tracking-tight">
+                    {p.prefix && <span className="mr-1.5 text-base font-medium text-muted">{p.prefix}</span>}
+                    {p.price}
+                  </p>
+                ) : (
+                  <p className="text-2xl font-extrabold tracking-tight">{quoteLabel}</p>
+                )}
+              </div>
               <CheckList items={p.features} className="mt-6 flex-1" />
               <ButtonLink
                 href={whatsappLink(enquiryMessage(p.name))}

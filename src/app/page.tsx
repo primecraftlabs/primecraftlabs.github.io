@@ -2,7 +2,7 @@ import { CtaBand, ProjectCard, ServiceCard, Steps } from "@/components/blocks";
 import { HeroVisual } from "@/components/HeroVisual";
 import { Icon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, CheckList, Chips, Container, Glow, Section, SectionHeading, WhatsAppButton } from "@/components/ui";
+import { ButtonLink, Card, CheckList, Chips, Container, Eyebrow, Section, SectionHeading, WhatsAppButton } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
 import { inCity, site } from "@/data/site";
@@ -32,30 +32,32 @@ const stack = ["Next.js", "React", "Kotlin Multiplatform", "Android", "iOS", "Go
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <Glow />
-        <Container className="relative grid items-center gap-16 pt-14 pb-24 sm:pt-24 lg:grid-cols-2 lg:pb-32">
+      <section className="overflow-hidden">
+        <Container className="grid items-center gap-14 pt-10 pb-4 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-12">
           <div>
-            <p className="mb-5 inline-block rounded-full bg-accent-soft px-3 py-1 text-sm font-semibold text-accent-text">
-              Websites · Apps · Backends{site.showCity ? ` · ${site.city}` : ""}
-            </p>
-            <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-6xl">
-              Websites and apps that bring your business <span className="text-accent-display">more customers</span>.
+            <Eyebrow>Websites · Apps · Backends{site.showCity ? ` · ${site.city}` : ""}</Eyebrow>
+            <h1 className="text-[2.6rem] leading-[1.04] font-extrabold tracking-tight text-balance sm:text-7xl">
+              Websites and apps that bring your business{" "}
+              <span className="relative whitespace-nowrap text-accent-display">
+                more customers
+                <span aria-hidden="true" className="absolute inset-x-0 -bottom-1 h-2 rounded-full bg-accent/35 sm:h-3" />
+              </span>
+              .
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-pretty text-muted">
+            <p className="mt-7 max-w-xl text-lg text-pretty text-muted">
               {site.name} builds fast websites with online booking and WhatsApp ordering for local businesses, and
               Android + iOS apps, web apps and cloud backends for startups.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-4">
               <WhatsAppButton />
               <ButtonLink href="/work/" variant="ghost">
                 See our work <Icon name="arrow" className="size-4" />
               </ButtonLink>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+            <ul className="mt-10 flex flex-wrap gap-3">
               {["Free sample design before you pay", "Works perfectly on phones", "Pay 50% now, 50% when you're happy"].map((p) => (
-                <li key={p} className="flex items-center gap-2">
-                  <Icon name="check" className="size-4 text-accent" /> {p}
+                <li key={p} className="soft-sm flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                  <Icon name="check" className="size-4 text-accent-text" /> {p}
                 </li>
               ))}
             </ul>
@@ -69,14 +71,14 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-2">
           {audiences.map((a) => (
             <Reveal key={a.title}>
-              <div className="flex h-full flex-col rounded-2xl border border-line bg-surface p-8">
-                <h3 className="text-xl font-bold">{a.title}</h3>
+              <Card className="flex h-full flex-col">
+                <h3 className="text-2xl font-extrabold tracking-tight">{a.title}</h3>
                 <p className="mt-3 text-muted">{a.text}</p>
                 <CheckList items={a.points} className="mt-6 flex-1" />
                 <ButtonLink href={a.href} variant="ghost" className="mt-8 self-start">
                   {a.cta} <Icon name="arrow" className="size-4" />
                 </ButtonLink>
-              </div>
+              </Card>
             </Reveal>
           ))}
         </div>

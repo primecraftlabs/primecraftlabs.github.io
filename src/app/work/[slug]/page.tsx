@@ -51,15 +51,18 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />
-      <section className="border-b border-line">
-        <Container className="py-12 sm:py-16">
-          <Link href="/work/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-fg">
-            <Icon name="arrow" className="size-4 rotate-180" /> All projects
+      <section>
+        <Container className="pt-12 pb-6 sm:pt-16 sm:pb-10">
+          <Link
+            href="/work/"
+            className="soft-sm soft-press inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-muted hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            <Icon name="arrow" className="size-4 rotate-180 text-accent-text" /> All projects
           </Link>
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-2">
+          <div className="mt-10 grid items-center gap-10 lg:grid-cols-2">
             <div>
-              <div className="mb-4 flex flex-wrap items-center gap-2">
-                <span className="text-sm font-semibold tracking-wide text-muted uppercase">{project.category}</span>
+              <div className="mb-5 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold tracking-[0.14em] text-muted uppercase">{project.category}</span>
                 <StatusBadge status={project.status} />
               </div>
               <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">{project.title}</h1>
@@ -70,7 +73,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                     Open live site <Icon name="arrow" className="size-4" />
                   </ButtonLink>
                 ) : (
-                  <span className="inline-flex items-center rounded-xl border border-dashed border-line px-5 py-3 font-semibold text-muted">
+                  <span className="soft-inset inline-flex items-center rounded-2xl px-6 py-3.5 font-semibold text-muted">
                     Live site coming soon
                   </span>
                 )}
@@ -81,35 +84,50 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 )}
               </div>
             </div>
-            <ProjectCover project={project} className="rounded-3xl border border-line shadow-xl" preload />
-
+            <div className="soft rounded-[1.75rem] p-3">
+              <div className="soft-inset rounded-[1.25rem] p-1.5">
+                <div className="overflow-hidden rounded-2xl">
+                  <ProjectCover project={project} preload />
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
       <Container className="grid gap-8 py-14 sm:py-20 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
-          <section>
-            <h2 className="text-2xl font-bold">The problem</h2>
+          <section className="soft rounded-[1.75rem] p-6 sm:p-8">
+            <h2 className="text-2xl font-extrabold tracking-tight">
+              The <span className="text-accent-display">problem</span>
+            </h2>
             <p className="mt-3 text-lg text-muted">{project.problem}</p>
           </section>
-          <section>
-            <h2 className="text-2xl font-bold">The solution</h2>
+          <section className="soft rounded-[1.75rem] p-6 sm:p-8">
+            <h2 className="text-2xl font-extrabold tracking-tight">
+              The <span className="text-accent-display">solution</span>
+            </h2>
             <p className="mt-3 text-lg text-muted">{project.solution}</p>
           </section>
-          <section className="rounded-2xl border border-line bg-surface p-6 sm:p-8">
-            <h2 className="mb-5 text-xl font-bold">Key features</h2>
+          <section className="soft rounded-[1.75rem] p-6 sm:p-8">
+            <h2 className="mb-6 text-xl font-extrabold tracking-tight">Key features</h2>
             <CheckList items={project.features} />
           </section>
         </div>
-        <aside className="space-y-6">
-          <div className="rounded-2xl border border-line bg-bg-alt p-6">
-            <h2 className="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Built with</h2>
+        <aside className="space-y-8">
+          <div className="soft rounded-[1.75rem] p-6">
+            <h2 className="mb-5 flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-muted uppercase">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
+              Built with
+            </h2>
             <Chips items={project.tech} />
           </div>
           {project.status === "in-progress" && (
-            <div className="rounded-2xl border border-line bg-accent-soft p-6">
-              <h2 className="font-bold">This demo is being built</h2>
+            <div className="soft-inset rounded-[1.75rem] p-6">
+              <h2 className="flex items-center gap-2 font-bold">
+                <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-accent" />
+                This demo is being built
+              </h2>
               <p className="mt-2 text-muted">
                 The live version will be linked here soon. Want the same for your business? Message us and we&apos;ll
                 show you a free sample.
